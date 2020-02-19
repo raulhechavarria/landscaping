@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.landscaping.entity.Yard;
@@ -13,18 +14,21 @@ import com.landscaping.repository.YardRepository;
 import com.landscaping.service.dto.YardDto;
 
 @Service
-public class YardServiceImpl implements YardService {
+@Qualifier("BigYardServiceImpl")
+public class BigYardServiceImpl  {
 
+	
+	
 	@Autowired
 	YardRepository repository;
 
-	@Override
+	
+	
 	public List<Yard> find() {
 		// TODO Auto-generated method stub
 		return (List<Yard>) repository.findAll();
 	}
 
-	@Override
 	public Yard findByID(Long id) {
 		try {
 			Yard obj = repository.findById(id).get();
@@ -35,7 +39,6 @@ public class YardServiceImpl implements YardService {
 		return null;
 	}
 
-	@Override
 	public Yard save(Yard objRequest) {
 		try {
 			return repository.save(objRequest);
@@ -45,7 +48,6 @@ public class YardServiceImpl implements YardService {
 		return null;
 	}
 
-	@Override
 	public List<YardDto> findByToDate() {
 		List<Yard> list = (List<Yard>) repository.findAll();
 		List<YardDto> listResult = new ArrayList<YardDto>();
@@ -66,7 +68,6 @@ public class YardServiceImpl implements YardService {
 		return listResult;
 	}
 
-	@Override
 	public void deleteYardByCustomer(Long id) {
 		try {
 		//	Customer customer = new Customer();

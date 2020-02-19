@@ -3,6 +3,7 @@ package com.landscaping.rest.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.landscaping.component.YardComponent;
 import com.landscaping.entity.Yard;
 import com.landscaping.service.YardService;
 import com.landscaping.service.dto.YardDto;
@@ -22,8 +24,9 @@ import com.landscaping.service.dto.YardDto;
 @RequestMapping("/yard")
 public class YardController {
 
+	
 	@Autowired
-	YardService service;
+	private YardService service;
 
 	@GetMapping
 	public @ResponseBody List<Yard> find() {
